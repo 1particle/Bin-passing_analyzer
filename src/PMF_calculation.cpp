@@ -128,9 +128,13 @@ void calculate_PMF_FR (vector<bin> & f, vector<bin> & r,  vector<bin> & w , int 
             // Getting the errors from the opposite size and combining the errors with appropriate weights
             for (int i=c-1; i >= 0 ; i --)         {
               if ( f[i].w_count && r[i].w_count )        {
-                w[i].W_temp = sqrt (pow(f[i].sd_mean_W,2)+pow(r[i].sd_mean_W,2));
-                if (i<c-1)
-                      w[i].W_temp = sqrt(pow(w[i].W_temp,2) + pow(w[i+1].W_temp,2));
+                if (i<c-1)	{
+                	w[i].W_temp = sqrt (pow(f[i+1].sd_mean_W,2)+pow(r[i+1].sd_mean_W,2));
+                	w[i].W_temp = sqrt(pow(w[i].W_temp,2) + pow(w[i+1].W_temp,2));
+                }
+                else
+                	w[i].W_temp = 0;
+
                  w[i].sd_mean_W = (w[i].sd_mean_W * w[i].W_temp)/sqrt(pow(w[i].sd_mean_W, 2)+ pow(w[i].W_temp,2));
 
               }
@@ -176,11 +180,13 @@ void calculate_PMF_BDFDT (vector<bin> & f, vector<bin> & r,  vector<bin> & w , d
             // Getting the errors from the opposite size and combining the errors with appropriate weights
             for (int i=c-1; i >= 0 ; i --)         {
               if ( f[i].w_count && r[i].w_count )        {
-                  w[i].W_temp = sqrt(pow(f[i].sd_mean_exp_half_W/f[i].exp_half_W,2)  +   pow(r[i].sd_mean_exp_half_W/r[i].exp_half_W,2))/beta;
-
-                   if (i<c-1)
-                        w[i].W_temp = sqrt(pow(w[i].W_temp,2) + pow(w[i+1].W_temp,2));
-                   w[i].sd_mean_W = (w[i].sd_mean_W * w[i].W_temp)/sqrt(pow(w[i].sd_mean_W, 2)+ pow(w[i].W_temp,2));
+                  if (i<c-1)	{
+                  	w[i].W_temp = sqrt (pow(f[i+1].sd_mean_W,2)+pow(r[i+1].sd_mean_W,2));
+                  	w[i].W_temp = sqrt(pow(w[i].W_temp,2) + pow(w[i+1].W_temp,2));
+                  }
+                  else
+                  	w[i].W_temp = 0;
+				   w[i].sd_mean_W = (w[i].sd_mean_W * w[i].W_temp)/sqrt(pow(w[i].sd_mean_W, 2)+ pow(w[i].W_temp,2));
 
               }
             }
@@ -219,11 +225,13 @@ void calculate_PMF_Jarzynski (vector<bin> & f, vector<bin> & r,  vector<bin> & w
             // Getting the errors from the opposite size and combining the errors with appropriate weights
             for (int i=c-1; i >= 0 ; i --)         {
               if ( f[i].w_count && r[i].w_count )        {
-                  w[i].W_temp = (f[i].sd_mean_exp_W/f[i].exp_W)/beta;
-
-             if (i<c-1)
-               w[i].W_temp = sqrt(pow(w[i].W_temp,2) + pow(w[i+1].W_temp,2));
-             w[i].sd_mean_W = (w[i].sd_mean_W * w[i].W_temp)/sqrt(pow(w[i].sd_mean_W, 2)+ pow(w[i].W_temp,2));
+                  if (i<c-1)	{
+                  	w[i].W_temp = sqrt (pow(f[i+1].sd_mean_W,2)+pow(r[i+1].sd_mean_W,2));
+                  	w[i].W_temp = sqrt(pow(w[i].W_temp,2) + pow(w[i+1].W_temp,2));
+                  }
+                  else
+                  	w[i].W_temp = 0;
+                  w[i].sd_mean_W = (w[i].sd_mean_W * w[i].W_temp)/sqrt(pow(w[i].sd_mean_W, 2)+ pow(w[i].W_temp,2));
 
               }
             }
