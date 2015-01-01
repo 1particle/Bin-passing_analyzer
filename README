@@ -1,19 +1,33 @@
 Bin-passing_analyzer
-Software for obtaining potential of mean force (PMF) profiles from non-equilibrium
-external work performed in steered molecular dynamics simulations.
+Software for obtaining potential of mean force (PMF) profiles from
+non-equilibrium external work performed in steered molecular dynamics
+simulations.
 **************************************
 Copyright 2014 Mostafa Nategholeslam
 **************************************
-Contact: physicsatguelph@gmail.com
+Contact: seyed.mostafa@gmail.com
 **************************************
-For a description of the purpose of this software, its design, theoretical motivations, and examples
-of its application, please see Chapter 2 of my PhD thesis at:
+For a description of the purpose of this software, its design,
+theoretical motivations, and examples of its application, please see
+Chapter 2 of my PhD thesis, obtainable for free at:
 
-https://atrium.lib.uoguelph.ca/xmlui/handle/10214/7790  
+https://atrium.lib.uoguelph.ca/xmlui/handle/10214/7790
 
-********************************************************************************
-********************************************************************************
-********************************************************************************
+
+
+If you use this software in your research, please cite the below paper
+in the resultant publications that utilize the bin-passing method:
+
+
+	Implementation of the Forward–Reverse Method for Calculating the
+	Potential of Mean Force Using a Dynamic Restraining Protocol
+	Mostafa Nategholeslam, C. G. Gray, and Bruno Tomberli
+	The Journal of Physical Chemistry B, 2014, 118 (49), 14203-14214
+
+
+***********************************************************************
+***********************************************************************
+***********************************************************************
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
